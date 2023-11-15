@@ -16,6 +16,7 @@ app.use(cors({
 const coursedetails=require("./router/CourseDetails")
 const courselist=require("./router/CourseSmall")
 const createstudent=require("./router/createStudent")
+const enrollcourse=require("./router/EnrollCourse")
 
 require("./db/conn")
 
@@ -28,7 +29,7 @@ app.get("/",async(req,res)=>{
 
 app.use('/v0',coursedetails)
 app.use("/v0",courselist)
-app.use("/v0",createstudent)
+app.use("/v0",createstudent,enrollcourse)
 
 
 app.listen(3000,()=>{
