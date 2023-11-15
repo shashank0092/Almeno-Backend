@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 
-router.get("/enrolledcourse", student, async (req, res) => {
+router.post("/enrolledcourse", student, async (req, res) => {
 
     const { sid } = req.body;
 
