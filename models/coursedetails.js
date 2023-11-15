@@ -50,11 +50,10 @@ const CourseDetailSchema=new mongoose.Schema({
         id:{
             type:String
         },
-        name:{
-            type:String
-        },
-        email:{
-            type:String
+        progress:{
+            type:Number,
+            default:0
+
         }
     }]
 })
