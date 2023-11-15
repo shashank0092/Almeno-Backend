@@ -53,7 +53,10 @@ const CourseDetailSchema=new mongoose.Schema({
         progress:{
             type:Number,
             default:0
-
+        },
+        completed:{
+            type:Boolean,
+            default:false
         }
     }]
 })

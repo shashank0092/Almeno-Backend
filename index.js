@@ -18,6 +18,7 @@ const courselist=require("./router/CourseSmall")
 const createstudent=require("./router/createStudent")
 const enrollcourse=require("./router/EnrollCourse")
 const enrolledcourses=require("./router/EnrolledCourse")
+const coursedone=require("./router/CourseDone")
 
 require("./db/conn")
 
@@ -32,6 +33,7 @@ app.use('/v0',coursedetails)
 app.use("/v0",courselist)
 app.use("/v0",createstudent,enrollcourse)
 app.use("/v0",enrolledcourses)
+app.use("/v0",coursedone)
 
 app.listen(3000,()=>{
     console.log("App runing at port 30000")
