@@ -48,7 +48,7 @@ const CourseDetailSchema=new mongoose.Schema({
     }],
     studnets:[{
         id:{
-            type:Number
+            type:String
         },
         name:{
             type:String
