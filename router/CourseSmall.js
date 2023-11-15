@@ -15,7 +15,7 @@ router.get("/courselist",student,async(req,res)=>{
     try{
         
      
-        const courselist=await courseinfo.find({},{name:1,instructor:1,description:1,thumbnail:1});
+        const courselist=await courseinfo.find({},{name:1,instructor:1,description:1,thumbnail:1,cid:1});
       
         if(!courselist){
             res.status(204).json({message:"courselist Data Is Not Avliable Now"})
