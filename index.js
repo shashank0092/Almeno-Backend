@@ -15,6 +15,8 @@ app.use(cors({
 
 const coursedetails=require("./router/CourseDetails")
 const courselist=require("./router/CourseSmall")
+const createstudent=require("./router/createStudent")
+
 require("./db/conn")
 
 
@@ -26,6 +28,8 @@ app.get("/",async(req,res)=>{
 
 app.use('/v0',coursedetails)
 app.use("/v0",courselist)
+app.use("/v0",createstudent)
+
 
 app.listen(3000,()=>{
     console.log("App runing at port 30000")
