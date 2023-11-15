@@ -1,10 +1,23 @@
 const express=require('express')
 const dotenv=require("dotenv")
+const cors=require("cors")
+
+
 dotenv.config({ path: './config.env' })
+
+
 const app=express();
+app.use(express.json())
+app.use(cors({
+    origin:'*'
+}))
+
+
 const coursedetails=require("./router/CourseDetails")
 const courselist=require("./router/CourseSmall")
 require("./db/conn")
+
+
 app.get("/",async(req,res)=>{
     res.status(200).json({
         message:"Welcome Shukla Boi"
