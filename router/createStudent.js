@@ -16,7 +16,7 @@ router.post("/createstudent",student,async(req,res)=>{
     try{
         
         
-        const student=await studnetdetails.create({name,email,picture});
+        const student=await studnetdetails.findOneAndUpdate({email:email},{$setOnInsert:{name:name,email:email,picture:picture}},{upsert:true,returnDocument:'after'}   );
         
         if(!student){
             res.status(204).json({message:"Student data not stored"})
