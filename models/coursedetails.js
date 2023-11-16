@@ -58,7 +58,10 @@ const CourseDetailSchema=new mongoose.Schema({
             type:Boolean,
             default:false
         }
-    }]
+    }],
+    likes:{
+        type:String
+    }
 })
 
 const CourseDetails=mongoose.model('coursedeatils',CourseDetailSchema)

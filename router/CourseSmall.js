@@ -17,7 +17,7 @@ router.get("/courselist",student,async(req,res)=>{
     try{
         
      
-        const courselist=await courseinfo.find({},{name:1,instructor:1,description:1,thumbnail:1,cid:1}).skip(skip).limit(limit)
+        const courselist=await courseinfo.find({},{name:1,instructor:1,description:1,thumbnail:1,cid:1,likes:1}).skip(skip).limit(limit)
        
 
 
