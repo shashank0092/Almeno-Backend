@@ -60,7 +60,7 @@ const CourseDetailSchema=new mongoose.Schema({
         }
     }],
     likes:{
-        type:String
+        type:Number
     }
 })
 

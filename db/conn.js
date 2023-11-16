@@ -7,6 +7,8 @@ const mongoose=require("mongoose")
     try{
         mongoose.connect(DB)
         console.log("connected to datbase sucessfully")
+      
+
     }
     catch(err){
         console.log("During Connection got an error->",err)
