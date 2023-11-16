@@ -11,16 +11,14 @@ router.use(bodyParser.json())
 router.post("/likecourse", student, async (req, res) => {
 
     const { cid } = req.body
-    console.log(cid, "this is id")
+    
+    if(cid==null||cid==undefined){
+        return res.json({message:"Please give a vaild course id"})
+    }
     try {
 
-        if (cid === undefined) {
-            console.log("bhia bhai gnadu")
-             res.status(204).json({ message: "Please Provide Id of course" })
-        }
-
-        else {
-            console.log("bhia bhai")
+        
+       
             const coursedeatils = await courseinfo.findOneAndUpdate({ "cid": cid },{$inc:{"likes":1}},{new:true});
 
 
@@ -30,7 +28,7 @@ router.post("/likecourse", student, async (req, res) => {
             else {
                 res.status(200).json({ message: "Course Details", data: coursedeatils })
             }
-        }
+        
     }
     catch (err) {
         console.log("Error while fetching dummy data->", err)

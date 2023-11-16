@@ -5,8 +5,9 @@ router.use(bodyParser.json())
 
 router.get("/searchcourse", student, async (req, res) => {
 
-    const {} = req.query
-    console.log(cid, "this is id")
+    const {coursename,instructorname} = req.query;
+
+    
     try {
 
         if (cid == undefined) {

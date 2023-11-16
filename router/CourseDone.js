@@ -12,9 +12,14 @@ router.post("/coursedone", student, async (req, res) => {
 
     const { sid,cid } = req.body;
 
-    if (sid == null || sid == undefined||cid==null||cid==undefined) {
+    if (sid == null || sid == undefined) {
         return res.json({ message: "Please Give Student Id" })
     }
+
+    if(cid==null||cid==undefined){
+        return res.json({message:'Please Give Student ID'})
+    }
+
 
     try {
 

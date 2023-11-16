@@ -13,7 +13,7 @@ router.post("/enrolledcourse", student, async (req, res) => {
     const { sid } = req.body;
 
     if (sid == null || sid == undefined) {
-        return res.json({ message: "Please Give Student Id" })
+        return res.json({ message: "Please Give Vaild Student Id" })
     }
 
     try {
