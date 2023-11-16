@@ -10,13 +10,17 @@ router.use(bodyParser.json())
 
 router.get("/courselist",student,async(req,res)=>{
 
-    
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = (page - 1) * limit;
    
     try{
         
      
-        const courselist=await courseinfo.find({},{name:1,instructor:1,description:1,thumbnail:1,cid:1});
-      
+        const courselist=await courseinfo.find({},{name:1,instructor:1,description:1,thumbnail:1,cid:1}).skip(skip).limit(limit)
+       
+
+
         if(!courselist){
             res.status(204).json({message:"courselist Data Is Not Avliable Now"})
         }
