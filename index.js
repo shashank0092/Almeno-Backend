@@ -4,16 +4,7 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const Pusher = require('pusher');
 
-const pusher = new Pusher({
-    appId: '1709429',
-    key: '7c2a444602df56ebc9c8',
-    secret: '9fbfaad52444873a6950',
-    cluster: 'ap2',
-    encrypted: true,
-});
-
 dotenv.config({ path: './config.env' })
-
 
 const app = express();
 app.use(express.json())
@@ -21,7 +12,19 @@ app.use(cors({
     origin: '*'
 }))
 
+const PUSHER_APP_ID = process.env.PUSHER_APP_ID;
+const PUSHER_KEY = process.env.PUSHER_KEY;
+const PUSHER_ENCRYPTED = process.env.PUHSER_ENCRYPTED;
+const PUSHER_SECRET = process.env.PUSHER_SECRET;
+const PUSHER_CLUSTER = process.env.PUSHER_CLUSTER;
 
+const pusher = new Pusher({
+    appId: PUSHER_APP_ID,
+    key: PUSHER_KEY,
+    secret: PUSHER_SECRET,
+    cluster: PUSHER_CLUSTER,
+    encrypted: PUSHER_ENCRYPTED,
+});
 
 const coursedetails = require("./router/CourseDetails")
 const courselist = require("./router/CourseSmall")
@@ -81,8 +84,6 @@ app.use("/v0", enrolledcourses)
 app.use("/v0", coursedone)
 app.use("/v0", likecourse)
 app.use("/v0",searchcourse)
-
-
 
 app.listen(3000, () => {
     console.log('Node server running on port 3000');
