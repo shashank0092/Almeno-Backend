@@ -12,7 +12,7 @@ router.get("/searchcourse", student, async (req, res) => {
 
     const{courseName,instructorName}=req.body;
 
-    if(courseName==null ||courseName==undefined || instructorName==null||courseName==undefined){
+    if(courseName==null ||courseName==undefined || instructorName==null||instructorName==undefined){
         return res.json({message:"Please Enter Coursename or Instructor Name"}).status(201)
     }
 
