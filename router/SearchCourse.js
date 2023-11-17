@@ -1,30 +1,36 @@
+const express = require("express")
+const courseinfo = require("../models/coursedetails")
+const router = express.Router()
+const bodyParser = require('body-parser');
+const student = require("../middleware/Student")
 
-
+router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 
 router.get("/searchcourse", student, async (req, res) => {
 
-    const {coursename,instructorname} = req.query;
+    const{courseName,instructorName}=req.body;
 
-    
+    if(courseName==null ||courseName==undefined || instructorName==null||courseName==undefined){
+        return res.json({message:"Please Enter Coursename or Instructor Name"}).status(201)
+    }
+
     try {
 
-        if (cid == undefined) {
-            return res.status(204).json({ message: "Please Provide Id of course" })
+
+        if(courseName==""){
+            const serchResult=await courseinfo.find({"instructor":RegExp(instructorName,"i")})
+            return res.json({data:serchResult,message:"Search Sucessfull"}).status(200)
+        }
+        else{
+            const serchResult=await courseinfo.find({"name":RegExp(courseName,"i")})
+            return res.json({data:serchResult,message:"Search Sucessfull"}).status(200)
         }
 
-        else {
-            const coursedeatils = await courseinfo.find({ "cid": cid });
-
-
-            if (!coursedeatils) {
-                res.status(204).json({ message: "Course Details Data Is Not Avliable Now" })
-            }
-            else {
-                res.status(200).json({ message: "Course Details", data: coursedeatils })
-            }
-        }
+        
+            
+        
     }
     catch (err) {
         console.log("Error while fetching dummy data->", err)

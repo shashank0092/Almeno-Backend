@@ -30,6 +30,7 @@ const enrollcourse = require("./router/EnrollCourse")
 const enrolledcourses = require("./router/EnrolledCourse")
 const coursedone = require("./router/CourseDone")
 const likecourse = require("./router/likecourse")
+const searchcourse=require("./router/SearchCourse")
 
 require("./db/conn")
 
@@ -79,6 +80,7 @@ app.use("/v0", createstudent, enrollcourse)
 app.use("/v0", enrolledcourses)
 app.use("/v0", coursedone)
 app.use("/v0", likecourse)
+app.use("/v0",searchcourse)
 
 
 
